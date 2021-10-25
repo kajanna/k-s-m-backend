@@ -6,8 +6,8 @@ const sendMessage = (req, res, next) => {
 let mailTransporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'xyz@gmail.com',
-        pass: '*************'
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD
     }
 });
 
