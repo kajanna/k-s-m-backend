@@ -9,14 +9,14 @@ const sendMessage = (req, res, next) => {
  if (!errors.isEmpty()) {
      throw new HttpError('Invalid inputs, check your form', 422)
  }
- const {title, message, email } = req.body;
+ const { name, message, email } = req.body;
 
  
  let mailDetails = {
     from: process.env.EMAIL,
-    to: email,
-    subject: title,
-    text: message
+    to: process.env.EMAIL,
+    subject: `message from ${email}- via contact form`,
+    text: ` ${name} send a message : ${message}`
  };
 
  let mailTransporter = nodemailer.createTransport({
