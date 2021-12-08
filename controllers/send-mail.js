@@ -34,21 +34,19 @@ const sendMessage = (req, res, next) => {
 
  mailTransporter.sendMail(mailDetails, function(err, data) {
     if(err) {
-        error = err
+      const err = new HttpError("Something went wrong. Your Message is not delivered");
+        return next(err);
     } 
  });
 
  mailTransporter.sendMail(mailDetailsCustomer, function(err, data) {
-    if (err) {
-        error = err
-    } 
+   if(err) {
+      const err = new HttpError("Something went wrong. Your Message is not delivered");
+      return next(err);
+  } 
  });
- if (error) {
-    const err = new HttpError("Something went wrong. Your Message is not delivered"); 
-    res.status(503).json(err);
- }  else {
-    res.status(200).json({message : "Your message has been send/Twoja wiadomość została wysłana"});
- }  
+
+ res.status(200).json({message: 'ok'});   
 }
 
 module.exports = sendMessage;
