@@ -5,7 +5,6 @@ const sendMessage = require('../controllers/send-mail');
 const router = express.Router();
 
 router.use(express.json());
-
 router.post(
  '/message', 
  [check('name').notEmpty().isLength({max: 60}),

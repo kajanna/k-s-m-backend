@@ -29,3 +29,5 @@ app.use((error, req, res, next) => {
     .json({message: error.message || 'Something went wrong!'});
     
 });
+
+app.listen(5000);
