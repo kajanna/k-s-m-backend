@@ -10,7 +10,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header(
      'Access-Control-Allow-Headers', 'Origin,Access-Control-Allow-Origin, X-Requested, Content-Type, Accept');
-     res.header('Access-Control-Allow-Methods','POST');
+     res.header('Access-Control-Allow-Methods','POST', 'GET');
     next();
 })
 
