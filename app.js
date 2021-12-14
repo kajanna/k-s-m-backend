@@ -1,6 +1,7 @@
 const express = require('express');
 
 const routes = require('./routes/routes');
+const HttpError = require('./models/http-error');
 
 const app  = express();
 app.use(express.urlencoded({extended: true}));
