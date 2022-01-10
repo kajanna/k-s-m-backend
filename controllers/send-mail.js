@@ -33,6 +33,8 @@ const sendMessage = (req, res, next) => {
  let error;
 
  mailTransporter.sendMail(mailDetails, function(err, data) {
+    console.log(mailDetails);
+    console.log(err);
     if(err) {
       const err = new HttpError("Something went wrong. Your Message is not delivered");
         return next(err);
@@ -40,6 +42,8 @@ const sendMessage = (req, res, next) => {
  });
 
  mailTransporter.sendMail(mailDetailsCustomer, function(err, data) {
+   console.log(mailDetailsCustomer);
+   console.log(err);
    if(err) {
       const err = new HttpError("Something went wrong. Your Message is not delivered");
       return next(err);
