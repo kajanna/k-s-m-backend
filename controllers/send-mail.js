@@ -24,7 +24,7 @@ const sendMessage = (req, res, next) => {
     text: `Your message : ${message}`
  }
  let mailTransporter = nodemailer.createTransport({
-    service: 'gmail',
+   host: process.env.EMAIL_HOST,
     auth: {
         user: process.env.EMAIL_SERVICE,
         pass: process.env.EMAIL_PASSWORD
@@ -33,8 +33,6 @@ const sendMessage = (req, res, next) => {
  let error;
 
  mailTransporter.sendMail(mailDetails, function(err, data) {
-    console.log(mailDetails);
-    console.log(err);
     if(err) {
       const err = new HttpError("Something went wrong. Your Message is not delivered");
         return next(err);
